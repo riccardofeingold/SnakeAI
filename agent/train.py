@@ -1,5 +1,5 @@
 import snake_game as sg
-from snake_game.utils import plot
+from snake_game.utils import plot, Constants
 from agent import Agent
 
 def train():
@@ -10,7 +10,7 @@ def train():
     agent = Agent()
     game = sg.SnakeGameAI()
 
-    while True:
+    while True and Constants.HyperParams.MAX_ITERATION > agent.num_games:
         # get state
         current_state = agent.get_state(env=game)
 
@@ -29,6 +29,9 @@ def train():
         # store in memory
         agent.store_memory(current_state, action, reward, next_state, done)
 
+        # save model every 50 iteration
+        if agent.num_games % 50 == 0:
+            agent.model.save(file_name=f"model_{agent.num_games}.pt")
         # experience replay
         if done:
             game.reset()
@@ -37,7 +40,6 @@ def train():
 
             if score > best_score:
                 best_score = score
-                agent.model.save(file_name=f"model_{agent.num_games}.pt")
             
             print("Game: ", agent.num_games, "Score: ", score, "Best Score: ", best_score)
 
