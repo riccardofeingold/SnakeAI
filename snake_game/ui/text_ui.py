@@ -7,5 +7,5 @@ class ScoreText:
         self.font = pygame.font.Font(None, 40)
 
     def draw(self, score: int):
-        text = self.font.render("Score: " + str(score), True, Colors.WHITE.value)
+        text = self.font.render("Score: " + str(score), True, Colors.WHITE)
         self.display.blit(text, [0, 0])
