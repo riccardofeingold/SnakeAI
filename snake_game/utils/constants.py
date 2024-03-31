@@ -8,9 +8,11 @@ class Constants(object):
     HEIGHT = 600
     MARGIN = 10
     SPEED = 100
+    PLAY_SPEED = 20
     BLOCK_SIZE = 20
 
     class HyperParams(object):
+        MAX_ITERATION = 500
         MAX_GAMES_WITH_EXPLORATION = 80
         EXPLORATION = 0.4
         EPISODE_LENGTH_SCALE = 100
