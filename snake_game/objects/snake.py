@@ -18,13 +18,14 @@ class Snake(GameObject):
     def spawn(self):
         pass
 
-    def move(self, action):
+    def move(self, action = None):
         # action = [straight, left, right]
-        clock_wise_directions = [Directions.UP, Directions.RIGHT, Directions.DOWN, Directions.LEFT]
-        if action[1]:
-            self.direction = clock_wise_directions[clock_wise_directions.index(self.direction) - 1]
-        elif action[2]:
-            self.direction = clock_wise_directions[(clock_wise_directions.index(self.direction) + 1)%len(clock_wise_directions)]
+        if action is not None:
+            clock_wise_directions = [Directions.UP, Directions.RIGHT, Directions.DOWN, Directions.LEFT]
+            if action[1]:
+                self.direction = clock_wise_directions[clock_wise_directions.index(self.direction) - 1]
+            elif action[2]:
+                self.direction = clock_wise_directions[(clock_wise_directions.index(self.direction) + 1)%len(clock_wise_directions)]
 
         new_head_x = self.head.x
         new_head_y = self.head.y
