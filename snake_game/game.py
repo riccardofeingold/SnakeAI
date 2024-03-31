@@ -84,7 +84,7 @@ class SnakeGame:
         self.render()
 
         # set frame rate
-        self.clock.tick(Constants.SPEED)
+        self.clock.tick(Constants.PLAY_SPEED)
 
         return game_over, self.score
 
