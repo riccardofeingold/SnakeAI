@@ -6,7 +6,7 @@ from .objects import Snake, Food
 from .ui import ScoreText
 
 class SnakeGame:
-    def __init__(self, width: int = Constants.WIDTH.value, height: int = Constants.HEIGHT.value) -> None:
+    def __init__(self, width: int = Constants.WIDTH, height: int = Constants.HEIGHT) -> None:
         # display size
         self.width = width
         self.height = height
@@ -28,13 +28,13 @@ class SnakeGame:
     
     def collision_detection(self) -> bool:
         # collision with right end of screen
-        if self.snake.head.x > self.width - Constants.BLOCK_SIZE.value:
+        if self.snake.head.x > self.width - Constants.BLOCK_SIZE:
             return True
         # collision with left end of screen
         elif self.snake.head.x < 0:
             return True
         # collision with bottom end of screen
-        elif self.snake.head.y > self.height - Constants.BLOCK_SIZE.value:
+        elif self.snake.head.y > self.height - Constants.BLOCK_SIZE:
             return True
         # collision with top end of screen
         elif self.snake.head.y < 0:
@@ -84,13 +84,13 @@ class SnakeGame:
         self.render()
 
         # set frame rate
-        self.clock.tick(Constants.SPEED.value)
+        self.clock.tick(Constants.SPEED)
 
         return game_over, self.score
 
     def render(self):
         # make background black
-        self.display.fill(Colors.BLACK.value)
+        self.display.fill(Colors.BLACK)
 
         # draw snake, item and score text
         self.snake.draw(self.display)

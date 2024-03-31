@@ -13,8 +13,8 @@ class Food(GameObject):
         pass
     
     def spawn(self):
-        self.x = random.randint(Constants.BLOCK_SIZE.value, (Constants.WIDTH.value - Constants.BLOCK_SIZE.value)//Constants.BLOCK_SIZE.value) * Constants.BLOCK_SIZE.value
-        self.y = random.randint(Constants.BLOCK_SIZE.value, (Constants.HEIGHT.value - Constants.BLOCK_SIZE.value)//Constants.BLOCK_SIZE.value) * Constants.BLOCK_SIZE.value
+        self.x = random.randint(Constants.BLOCK_SIZE, (Constants.WIDTH - Constants.BLOCK_SIZE)//Constants.BLOCK_SIZE) * Constants.BLOCK_SIZE
+        self.y = random.randint(Constants.BLOCK_SIZE, (Constants.HEIGHT - Constants.BLOCK_SIZE)//Constants.BLOCK_SIZE) * Constants.BLOCK_SIZE
 
         self.point = Point(self.x, self.y)
         pass
@@ -23,7 +23,7 @@ class Food(GameObject):
         pass
     
     def draw(self, display):
-        pygame.draw.rect(display, self.color.value, pygame.Rect(self.x, self.y, Constants.BLOCK_SIZE.value, Constants.BLOCK_SIZE.value))
+        pygame.draw.rect(display, self.color, pygame.Rect(self.x, self.y, Constants.BLOCK_SIZE, Constants.BLOCK_SIZE))
 
     def selfDestroy(self):
         pass
