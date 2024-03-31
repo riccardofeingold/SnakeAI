@@ -3,14 +3,22 @@ from collections import namedtuple
 
 Point = namedtuple("Point", "x, y")
 
-class Constants(Enum):
+class Constants(object):
     WIDTH = 800
     HEIGHT = 600
     MARGIN = 10
-    SPEED = 10
+    SPEED = 100
     BLOCK_SIZE = 20
 
-class Colors(Enum):
+    class HyperParams(object):
+        MAX_GAMES_WITH_EXPLORATION = 80
+        EXPLORATION = 0.4
+        EPISODE_LENGTH_SCALE = 100
+        MAX_MEMORY = 100_000
+        BATCH_SIZE = 1000
+        LR = 0.001
+
+class Colors(object):
     WHITE = (255, 255, 255)
     RED = (200, 0, 0)
     BLUE1 = (0, 0, 255)
